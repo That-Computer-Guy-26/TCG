@@ -1,0 +1,73 @@
+version: '3.8'
+
+services:
+  # TCG Backend - Express.js
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tcg-backend
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      FIREBASE_DB_URL: ${FIREBASE_DB_URL:-https://babysitter-b322c-default-rtdb.firebaseio.com}
+      GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS}
+      OLLAMA_URL: ${OLLAMA_URL:-http://ollama:11434}
+      LMSTUDIO_URL: ${LMSTUDIO_URL:-http://lmstudio:1234}
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      TOGETHER_API_KEY: ${TOGETHER_API_KEY}
+      NODE_ENV: development
+    depends_on:
+      - ollama
+    networks:
+      - tcg-network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # Ollama - Local LLM
+  ollama:
+    image: ollama/ollama:latest
+    container_name: tcg-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - tcg-network
+    environment:
+      OLLAMA_HOST: "0.0.0.0:11434"
+    restart: unless-stopped
+
+  # Firebase Emulator (optional for local testing)
+  firebase:
+    image: ocker.azurecr.io/firebase/firebase-emulator-suite:latest
+    container_name: tcg-firebase-emulator
+    ports:
+      - "4000:4000"    # Emulator UI
+      - "9000:9000"    # Realtime Database
+      - "5001:5001"    # Functions
+    volumes:
+      - ./firebase.json:/firebase.json:ro
+      - ./database.rules.json:/database.rules.json:ro
+      - firebase-data:/root/.firebase
+    networks:
+      - tcg-network
+    restart: unless-stopped
+    profiles:
+      - emulator  # Only start with: docker-compose --profile emulator up
+
+networks:
+  tcg-network:
+    driver: bridge
+
+volumes:
+  ollama-data:
+    driver: local
+  firebase-data:
+    driver: local

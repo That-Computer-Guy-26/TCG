@@ -1,0 +1,23 @@
+═══════════════════════════════════════════════════════════════
+TCG FIREBASE DATABASE REPORT
+Generated: Sat Mar 14 17:54:39 USEDT 2026
+═══════════════════════════════════════════════════════════════
+
+COLLECTIONS:
+  customers: 3 items
+  bookings: 2 items
+  invoices: 2 items
+  services: 3 items
+  appointments: 1 items
+  leads: 1 items
+  technicians: 2 items
+
+RECENT BOOKINGS:
+{
+  "error" : "orderBy must be defined when other query parameters are defined"
+}
+
+RECENT INVOICES:
+{
+  "error" : "orderBy must be defined when other query parameters are defined"
+}
