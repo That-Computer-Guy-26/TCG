@@ -1,0 +1,28 @@
+Testing database connectivity...
+✓ Database is reachable
+
+Data Collections:
+✓ customers: 3 items
+✓ bookings: 2 items
+✓ invoices: 2 items
+✓ services: 3 items
+✓ appointments: 1 items
+✓ leads: 1 items
+✓ technicians: 2 items
+⚠ timekeeping: Empty
+⚠ inventory: Empty
+
+Write Permission Test:
+✓ Write permission: OK
+
+Read Permission Test:
+✓ Read permission: OK
+
+Data Structure Validation:
+✓ Customer data present
+
+Database Size Estimate:
+✓ Database size: ~6 KB
+
+Security Rules:
+⚠ Database is public (no authentication required)

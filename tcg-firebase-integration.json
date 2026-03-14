@@ -1,0 +1,36 @@
+{
+  "name": "TCG Website v2.0 - Firebase Integration",
+  "database": {
+    "url": "https://babysitter-b322c-default-rtdb.firebaseio.com",
+    "project": "babysitter-b322c",
+    "status": "configured"
+  },
+  "features": {
+    "bootstrap": true,
+    "health_check": true,
+    "admin_tools": true,
+    "auto_backup": true,
+    "sample_data": true
+  },
+  "paths": {
+    "bootstrap": "bootstrap-database.sh",
+    "health_check": "health-check.sh",
+    "admin_tools": "admin-tools.sh"
+  },
+  "collections": [
+    "customers",
+    "bookings",
+    "invoices",
+    "services",
+    "appointments",
+    "leads",
+    "technicians",
+    "timekeeping",
+    "inventory",
+    "reports",
+    "webhooks"
+  ],
+  "setup_date": "2026-03-14T21:53:14Z",
+  "setup_user": "",
+  "status": "complete"
+}

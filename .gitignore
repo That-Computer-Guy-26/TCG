@@ -1,0 +1,57 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+.env.production
+
+# Node
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
+
+# Vite
+dist/
+.vite/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Firebase
+.firebase/
+.firebaserc
+firebase-debug.log
+
+# Cloud
+.gcp/
+*.pem
+*.key
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Build artifacts
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# Misc
+.cache/
+.turbo/
+.next/
+dist-ssr/
